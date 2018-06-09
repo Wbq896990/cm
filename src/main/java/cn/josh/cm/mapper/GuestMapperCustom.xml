@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.josh.cm.mapper.GuestMapperCustom" >
+
+    <!--定义动态sql片段-->
+    <sql id="query_guest_where">
+        <if test="guestCustom!=null">
+            <if test="guestCustom.name!=null and guestCustom.name!=' '">
+                guest.name LIKE '%${guestCustom.name}%'
+            </if>
+        </if>
+    </sql>
+
+    <!--客户列表查询-->
+    <select id="findGuestList" resultType="cn.josh.cm.po.GuestCustom"
+            parameterType="cn.josh.cm.po.GuestQueryVo">
+            SELECT * FROM guest
+            <where>
+                <include refid="query_guest_where"/>
+            </where>
+    </select>
+</mapper>
