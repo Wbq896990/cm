@@ -15,4 +15,10 @@ public interface GuestService {
 
     //根据id修改客户信息
     void updateGuestById(Integer id, GuestCustom guestCustom) throws Exception;
+
+    //根据id删除客户
+    void deleteGuestById(Integer id)throws Exception;
+
+    //添加新客户
+    void insertGuest(GuestCustom guestCustom)throws Exception;
 }

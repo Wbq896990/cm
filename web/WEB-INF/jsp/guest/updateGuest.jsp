@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="guestForm" action="${pageContext.request.contextPath}/guest/updateGuestSubmit.action"
-          method="post" enctype="multipart/form-data">
+          method="post" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="id" value="${guestCustom.id}"/>
         修改客户信息：
         <table width="100%" border="1">

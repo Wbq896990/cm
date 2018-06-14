@@ -2,7 +2,7 @@ package cn.josh.cm.po;
 
 /**
  * @Author: Josh.Wang
- * @Description:
+ * @Description:客户类扩展类
  * @Date: Created in 15:46 2018/6/5
  * @Modified By:
  */

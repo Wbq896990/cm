@@ -65,4 +65,30 @@ public class GuestServiceImpl implements GuestService {
         guestCustom.setId(id);
         guestMapper.updateByPrimaryKey(guestCustom);
     }
+
+    /**
+     * @Author: Josh.Wang
+     * @Param:id
+     * @Description:根据id删除客户信息
+     * @Date: Created in 16:24 2018/6/11
+     * @Modified By:
+    */
+    @Override
+    public void deleteGuestById(Integer id) throws Exception {
+        guestMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * @Author: Josh.Wang
+     * @Param:guestCustom客户信息
+     * @Description:添加新客户
+     * @Date: Created in 13:22 2018/6/12
+     * @Modified By:
+    */
+    @Override
+    public void insertGuest(GuestCustom guestCustom) throws Exception {
+        guestMapper.insert(guestCustom);
+    }
+
+
 }

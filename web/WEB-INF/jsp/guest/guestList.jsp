@@ -33,11 +33,15 @@
             <td>${guest.carid }</td>
             <td>
                 <a href="${pageContext.request.contextPath}/guest/updateGuest.action?id=${guest.id }">修改</a>
-                <a href="">删除</a>
+                <a href="${pageContext.request.contextPath}/guest/deleteGuest.action?id=${guest.id }">删除</a>
             </td>
         </tr>
     </c:forEach>
-
+    <tr>
+        <td align="center" colspan="7">
+            <a href="${pageContext.request.contextPath}/guest/preInsertGuest.action">新增客户</a>
+        </td>
+    </tr>
 </table>
 
 </body>

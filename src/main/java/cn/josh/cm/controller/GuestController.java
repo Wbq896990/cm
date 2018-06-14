@@ -4,12 +4,14 @@ import cn.josh.cm.po.GuestCustom;
 import cn.josh.cm.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -56,15 +58,16 @@ public class GuestController {
      * @Modified By:
     */
     @RequestMapping(value = "/updateGuest" ,method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView updateGuest(Integer id)throws Exception{
+    public String updateGuest(Model model,Integer id)throws Exception{
         //调用客户service，根据客户id获取客户信息
         GuestCustom guestCustom = guestService.findGuestById(id);
-        ModelAndView modelAndView = new ModelAndView();
+        /*ModelAndView modelAndView = new ModelAndView();
         //将客户信息放到ModelAndView
         modelAndView.addObject("guestCustom",guestCustom);
         //客户信息修改页面
-        modelAndView.setViewName("/guest/updateGuest");
-        return modelAndView;
+        modelAndView.setViewName("/guest/updateGuest");*/
+        model.addAttribute("guestCustom",guestCustom);
+        return "/guest/updateGuest";
     }
 
     /**
@@ -75,11 +78,54 @@ public class GuestController {
      * @Modified By:
     */
     @RequestMapping(value = "/updateGuestSubmit", method = {RequestMethod.POST})
-    public ModelAndView updateGuestSubmit(Integer id ) throws Exception{
-
-       // guestService.updateGuestById(guestCustom.getId(),guestCustom);
-        ModelAndView modelAndView = new ModelAndView();
+    public String updateGuestSubmit(Integer id, GuestCustom guestCustom ) throws Exception{
+        guestService.updateGuestById(id,guestCustom);
+        //ModelAndView modelAndView = new ModelAndView();
         //将客户信息放入modelandview中
+        //modelAndView.setViewName("/success");
+        return "forward:queryGuest.action";
+    }
+
+    /**
+     * @Author: Josh.Wang
+     * @Param:id
+     * @Description:根据id删除客户信息Controller方法
+     * @Date: Created in 16:42 2018/6/11
+     * @Modified By:
+    */
+    @RequestMapping(value = "/deleteGuest", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView deleteGuestById(Integer id)throws Exception{
+        guestService.deleteGuestById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/success");
+        return modelAndView;
+    }
+
+    /**
+     * @Author: Josh.Wang
+     * @Param: * @param null
+     * @Description:预新增客户
+     * @Date: Created in 13:40 2018/6/12
+     * @Modified By:
+    */
+    @RequestMapping(value = "/preInsertGuest", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView preInsertGuest()throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/guest/insertGuest");
+        return modelAndView;
+    }
+
+    /**
+     * @Author: Josh.Wang
+     * @Param:guestCustom客户信息
+     * @Description:添加新客户
+     * @Date: Created in 13:24 2018/6/12
+     * @Modified By:
+    */
+    @RequestMapping(value = "/insertGuest", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView insertGuest(GuestCustom guestCustom)throws Exception{
+        guestService.insertGuest(guestCustom);
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/success");
         return modelAndView;
     }
