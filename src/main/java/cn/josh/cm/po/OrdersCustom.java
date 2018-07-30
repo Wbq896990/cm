@@ -6,5 +6,5 @@ package cn.josh.cm.po;
  * @Date: Created in 14:14 2018/6/12
  * @Modified By:
  */
-public class OrderCustom extends Order {
+public class OrdersCustom extends Orders {
 }

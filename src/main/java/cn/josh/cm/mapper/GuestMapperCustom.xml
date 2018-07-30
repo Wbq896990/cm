@@ -4,11 +4,13 @@
 
     <!--定义动态sql片段-->
     <sql id="query_guest_where">
-        <if test="guestCustom!=null">
-            <if test="guestCustom.name!=null and guestCustom.name!=' '">
-                guest.name LIKE '%${guestCustom.name}%'
+
+            <if test="guestCustom!=null">
+                <if test="guestCustom.phone!=null and guestCustom.phone!=' '">
+                    guest.phone LIKE '%${guestCustom.phone}%'
+                </if>
             </if>
-        </if>
+
     </sql>
 
     <!--客户列表查询-->

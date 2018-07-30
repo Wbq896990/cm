@@ -6,5 +6,5 @@
 
   <!--管理service-->
   <bean id="guestService" class="cn.josh.cm.service.impl.GuestServiceImpl"></bean>
-  <bean id="orderService" class="cn.josh.cm.service.impl.OrderServiceImpl"></bean>
+  <bean id="ordersService" class="cn.josh.cm.service.impl.OrdersServiceImpl"></bean>
 </beans>

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Josh
@@ -23,23 +24,23 @@
         <td>日期</td>
         <td>操作</td>
     </tr>
-    <c:forEach items="${orderCustomList}" var="order">
+    <c:forEach items="${ordersCustomList}" var="orders">
         <tr>
-            <td>${order.name }</td>
-            <td>${order.phone }</td>
-            <td>${order.carid }</td>
-            <td>${order.projectname }</td>
-            <td>${order.price }</td>
-            <td>${order.date }</td>
+            <td>${orders.name }</td>
+            <td>${orders.phone }</td>
+            <td>${orders.carid }</td>
+            <td>${orders.projectname }</td>
+            <td>${orders.price }</td>
+            <td><fmt:formatDate value="${orders.date }" pattern="yyyy-MM-dd"/></td>
             <td>
-                <a href="${pageContext.request.contextPath}/guest/updateOrder.action?id=${guest.id }">修改</a>
-                <a href="${pageContext.request.contextPath}/guest/deleteOrder.action?id=${guest.id }">删除</a>
+                <a href="${pageContext.request.contextPath}/orders/updateOrders.action?id=${orders.id }">修改</a>
+                <a href="${pageContext.request.contextPath}/orders/deleteOrders.action?id=${orders.id }">删除</a>
             </td>
         </tr>
     </c:forEach>
     <tr>
         <td align="center" colspan="7">
-            <a href="${pageContext.request.contextPath}/guest/preInsertOrder.action">新建订单</a>
+            <a href="${pageContext.request.contextPath}/orders/preInsertOrders.action">新建订单</a>
         </td>
     </tr>
 </table>

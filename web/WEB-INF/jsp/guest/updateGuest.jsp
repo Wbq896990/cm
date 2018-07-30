@@ -40,9 +40,14 @@
                 <td>车牌号</td>
                 <td><input type="text" name="carid" value="${guestCustom.carid}"></td>
             </tr>
-            <td colspan="2" align="center">
-                <input type="submit" value="提交"/>
-            </td>
+            <tr>
+                <td align="center">
+                    <input type="submit" value="提交"/>
+                </td>
+                <td align="center">
+                    <input type="button" value="返回" onclick="history.back()"/>
+                </td>
+            </tr>
         </table>
     </form>>
 </body>

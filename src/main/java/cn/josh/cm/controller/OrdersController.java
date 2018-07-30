@@ -1,14 +1,15 @@
 package cn.josh.cm.controller;
 
-import cn.josh.cm.po.OrderCustom;
-import cn.josh.cm.po.OrderQueryVo;
-import cn.josh.cm.service.OrderService;
+import cn.josh.cm.po.OrdersCustom;
+import cn.josh.cm.po.OrdersQueryVo;
+import cn.josh.cm.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,24 +19,24 @@ import java.util.List;
  * @Modified By:
  */
 @Controller
-@RequestMapping("/order")
-public class OrderController {
+@RequestMapping("/orders")
+public class OrdersController {
     @Autowired
-    private OrderService orderService;
+    private OrdersService ordersService;
 
     /**
      * @Author: Josh.Wang
-     * @Param:orderQueryVo订单包装类
+     * @Param:ordersQueryVo订单包装类
      * @Description:订单controller查询列表方法
      * @Date: Created in 14:56 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/queryOrder", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView queryOrder(OrderQueryVo orderQueryVo)throws Exception{
-        List<OrderCustom> orderCustomList = orderService.findOrderList(orderQueryVo);
+    @RequestMapping(value = "/queryOrders", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView queryOrders(OrdersQueryVo ordersQueryVo)throws Exception{
+        List<OrdersCustom> ordersCustomList = ordersService.findOrdersList(null);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("orderCustomList", orderCustomList);
-        modelAndView.setViewName("/order/orderList");
+        modelAndView.addObject("ordersCustomList", ordersCustomList);
+        modelAndView.setViewName("/orders/ordersList");
         return modelAndView;
     }
 
@@ -46,25 +47,25 @@ public class OrderController {
      * @Date: Created in 15:58 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/updateOrder", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView updateOrder(Integer id)throws Exception{
-        OrderCustom orderCustom = orderService.findOrderById(id);
+    @RequestMapping(value = "/updateOrders", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView updateOrders(Integer id)throws Exception{
+        OrdersCustom ordersCustom = ordersService.findOrdersById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("orderCustom", orderCustom);
-        modelAndView.setViewName("/order/updateOrder");
+        modelAndView.addObject("ordersCustom", ordersCustom);
+        modelAndView.setViewName("/orders/updateOrders");
         return modelAndView;
     }
 
     /**
      * @Author: Josh.Wang
-     * @Param:id,orderCustom
+     * @Param:id,ordersCustom
      * @Description:根据id将订单信息更新controller方法
      * @Date: Created in 16:06 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/updateOrderSubmit",method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView updateOrderSubmit(Integer id, OrderCustom orderCustom)throws Exception{
-        orderService.updateOrderById(id, orderCustom);
+    @RequestMapping(value = "/updateOrdersSubmit",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView updateOrdersSubmit(Integer id, OrdersCustom ordersCustom)throws Exception{
+        ordersService.updateOrdersById(id, ordersCustom);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/success");
         return modelAndView;
@@ -77,9 +78,9 @@ public class OrderController {
      * @Date: Created in 16:08 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/deleteOrder", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView deleteOrder(Integer id)throws Exception{
-        orderService.deleteOrderById(id);
+    @RequestMapping(value = "/deleteOrders", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView deleteOrders(Integer id)throws Exception{
+        ordersService.deleteOrdersById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/success");
         return modelAndView;
@@ -92,23 +93,24 @@ public class OrderController {
      * @Date: Created in 16:11 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/preInsertOrder", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView preInsertOrder()throws Exception{
+    @RequestMapping(value = "/preInsertOrders", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView preInsertOrders()throws Exception{
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/order/insertOrder");
+        modelAndView.setViewName("/orders/insertOrders");
         return modelAndView;
     }
 
     /**
      * @Author: Josh.Wang
-     * @Param:orderCustom
+     * @Param:ordersCustom
      * @Description:新建订单contr方法
      * @Date: Created in 16:13 2018/6/13
      * @Modified By:
     */
-    @RequestMapping(value = "/insertOrder", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView insertOrder(OrderCustom orderCustom)throws Exception{
-        orderService.insertOrder(orderCustom);
+    @RequestMapping(value = "/insertOrders", method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView insertOrders(OrdersCustom ordersCustom)throws Exception{
+        ordersCustom.setDate(new Date());
+        ordersService.insertOrders(ordersCustom);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/success");
         return modelAndView;

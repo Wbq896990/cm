@@ -2,7 +2,7 @@ package cn.josh.cm.po;
 
 import java.util.Date;
 
-public class Order {
+public class Orders {
     private Integer id;
 
     private String projectname;

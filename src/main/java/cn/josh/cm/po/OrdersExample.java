@@ -5,23 +5,23 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class OrderExample {
-    protected String orderByClause;
+public class OrdersExample {
+    protected String ordersByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public OrderExample() {
+    public OrdersExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public void setOrderByClause(String orderByClause) {
-        this.orderByClause = orderByClause;
+    public void setOrdersByClause(String ordersByClause) {
+        this.ordersByClause = ordersByClause;
     }
 
-    public String getOrderByClause() {
-        return orderByClause;
+    public String getOrdersByClause() {
+        return ordersByClause;
     }
 
     public void setDistinct(boolean distinct) {
@@ -61,7 +61,7 @@ public class OrderExample {
 
     public void clear() {
         oredCriteria.clear();
-        orderByClause = null;
+        ordersByClause = null;
         distinct = false;
     }
 

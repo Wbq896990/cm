@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.josh.cm.mapper.OrdersMapperCustom" >
+
+    <sql id="query_orders_where">
+        <if test="ordersCustom != null">
+            <if test="ordersCustom.name != null and ordersCustom.name != ' '">
+                orders.name LIKE '%${ordersCustom.name}%'
+            </if>
+        </if>
+    </sql>
+
+    <select id="findOrdersList" parameterType="cn.josh.cm.po.OrdersQueryVo" resultType="cn.josh.cm.po.OrdersCustom">
+        SELECT * FROM orders
+        <where>
+          <include refid="query_orders_where"/>
+        </where>
+    </select>
+</mapper>

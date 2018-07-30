@@ -12,6 +12,12 @@
     <title>客户列表</title>
 </head>
 <body>
+<form id="queryGuestForm" action="${pageContext.request.contextPath}/guest/queryGuest.action"
+       method="post" enctype="application/x-www-form-urlencoded">
+    根据手机号搜索：
+    <input type="text" name="phone"/>
+    <input type="submit" value="搜索"/>
+</form>
 客户列表：
 <table width="100%" border=1>
     <tr>

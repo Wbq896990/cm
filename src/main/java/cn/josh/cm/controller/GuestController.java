@@ -1,6 +1,7 @@
 package cn.josh.cm.controller;
 
 import cn.josh.cm.po.GuestCustom;
+import cn.josh.cm.po.GuestQueryVo;
 import cn.josh.cm.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +38,15 @@ public class GuestController {
     */
     //method属性限制页面请求方法，限定必须是post或者get请求。这样做是为了安全考虑
     @RequestMapping(value = "/queryGuest" , method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView queryGuest() throws Exception{
+    public ModelAndView queryGuest(String phone) throws Exception{
+        //将页面取得的phone属性设置到guestQueryVo中
+        GuestQueryVo guestQueryVo = new GuestQueryVo();
+        GuestCustom guestCustom = new GuestCustom();
+        guestCustom.setPhone(phone);
+        guestQueryVo.setGuestCustom(guestCustom);
+
         //调用service查询数据库
-        List<GuestCustom> guestCustomList = guestService.findGuestList(null);
+        List<GuestCustom> guestCustomList = guestService.findGuestList(guestQueryVo);
         //返回ModelAndView
         ModelAndView modelAndView = new ModelAndView();
         //将数据库查询到的数据填充ModelAndView，从jsp页面可以通过guestCustomList取数据

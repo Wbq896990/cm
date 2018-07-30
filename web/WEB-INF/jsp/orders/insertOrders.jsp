@@ -11,7 +11,7 @@
     <title>新建订单</title>
 </head>
 <body>
-<form id="insertOrderForm" action="${pageContext.request.contextPath}/order/insertOrder.action"
+<form id="insertOrdersForm" action="${pageContext.request.contextPath}/orders/insertOrders.action"
       method="post" enctype="application/x-www-form-urlencoded">
     新建订单：
     <table width="100%" border="1">
@@ -36,13 +36,15 @@
             <td><input type="text" name="price"></td>
         </tr>
         <tr>
-            <td>日期</td>
-            <td><input type="text" name="date"></td>
+            <td align="center">
+                <input type="submit" value="提交"/>
+            </td>
+            <td align="center">
+                <input type="button" value="返回" onclick="history.back()"/>
+            </td>
         </tr>
-        <td colspan="2" align="center">
-            <input type="submit" value="提交"/>
-        </td>
+
     </table>
-</form>>
+</form>
 </body>
 </html>
