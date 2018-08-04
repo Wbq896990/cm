@@ -14,6 +14,8 @@ import java.util.List;
 public interface OrdersService {
     //按条件查询订单记录
     List<OrdersCustom> findOrdersList(OrdersQueryVo ordersQueryVo)throws Exception;
+    //查询保养超过90天的
+    List<OrdersCustom> findSpecialOrdersList(OrdersQueryVo ordersQueryVo)throws Exception;
     //根据id查询订单信息
     OrdersCustom findOrdersById(Integer id)throws Exception;
     //根据id更新订单信息

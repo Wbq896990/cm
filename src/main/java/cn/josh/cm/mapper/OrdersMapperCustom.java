@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface OrdersMapperCustom {
     List<OrdersCustom> findOrdersList(OrdersQueryVo ordersQueryVo)throws Exception;
+
+    List<OrdersCustom> findSpecialOrdersList(OrdersQueryVo ordersQueryVo) throws Exception;
 }

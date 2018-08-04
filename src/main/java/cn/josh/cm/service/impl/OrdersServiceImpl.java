@@ -34,6 +34,17 @@ public class OrdersServiceImpl implements OrdersService {
     public List<OrdersCustom> findOrdersList(OrdersQueryVo ordersQueryVo) throws Exception {
         return ordersMapperCustom.findOrdersList(ordersQueryVo);
     }
+    /**
+     * @Author: Josh.Wang
+     * @Param: ordersQueryVo 参数，orders包装对象
+     * @Description:查询保养超过90天的车辆信息
+     * @Date: Created in 12:42 2018/8/4
+     * @Modified By:
+    */
+    @Override
+    public List<OrdersCustom> findSpecialOrdersList(OrdersQueryVo ordersQueryVo) throws Exception {
+        return ordersMapperCustom.findSpecialOrdersList(ordersQueryVo);
+    }
 
     /**
      * @Author: Josh.Wang

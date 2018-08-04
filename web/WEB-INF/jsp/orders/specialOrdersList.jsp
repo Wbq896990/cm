@@ -10,17 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
 <html>
 <head>
-    <title>订单列表</title>
+    <title>保养90天列表</title>
 </head>
 <body>
-<form id="queryOrdersForm" action="${pageContext.request.contextPath}/orders/queryOrders.action"
-      method="post" enctype="application/x-www-form-urlencoded">
-    根据手机号搜索：
-    <input type="text" name="phone"/>
-    <input type="submit" value="搜索"/>
-</form>
-<a href="${pageContext.request.contextPath}/orders/findSpecialOrdersList.action">保养超过90天列表</a><br>
-订单列表：
+保养90天列表：
 <table width="100%" border=1>
     <tr>
         <td>名字</td>
@@ -40,16 +33,10 @@
             <td>${orders.price }</td>
             <td><fmt:formatDate value="${orders.date }" pattern="yyyy-MM-dd"/></td>
             <td>
-                <a href="${pageContext.request.contextPath}/orders/updateOrders.action?id=${orders.id }">修改</a>
                 <a href="${pageContext.request.contextPath}/orders/deleteOrders.action?id=${orders.id }">删除</a>
             </td>
         </tr>
     </c:forEach>
-    <tr>
-        <td align="center" colspan="7">
-            <a href="${pageContext.request.contextPath}/orders/preInsertOrders.action">新建订单</a>
-        </td>
-    </tr>
 </table>
 
 </body>

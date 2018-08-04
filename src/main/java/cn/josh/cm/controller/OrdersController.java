@@ -32,14 +32,33 @@ public class OrdersController {
      * @Modified By:
     */
     @RequestMapping(value = "/queryOrders", method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView queryOrders(OrdersQueryVo ordersQueryVo)throws Exception{
-        List<OrdersCustom> ordersCustomList = ordersService.findOrdersList(null);
+    public ModelAndView queryOrders(String phone)throws Exception{
+        OrdersQueryVo ordersQueryVo = new OrdersQueryVo();
+        OrdersCustom ordersCustom = new OrdersCustom();
+        ordersCustom.setPhone(phone);
+        ordersQueryVo.setOrdersCustom(ordersCustom);
+        List<OrdersCustom> ordersCustomList = ordersService.findOrdersList(ordersQueryVo);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ordersCustomList", ordersCustomList);
         modelAndView.setViewName("/orders/ordersList");
         return modelAndView;
     }
 
+    /**
+     * @Author: Josh.Wang
+     * @Param:ordersQueryVo订单包装类
+     * @Description:查询保养超过90天的车辆信息controller方法
+     * @Date: Created in 12:55 2018/8/4
+     * @Modified By:
+    */
+    @RequestMapping(value = "/findSpecialOrdersList")
+    public ModelAndView queryOrdersByDays()throws Exception{
+        List<OrdersCustom> ordersCustomList = ordersService.findSpecialOrdersList(null);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("ordersCustomList",ordersCustomList);
+        modelAndView.setViewName("/orders/specialOrdersList");
+        return modelAndView;
+    }
     /**
      * @Author: Josh.Wang
      * @Param:id

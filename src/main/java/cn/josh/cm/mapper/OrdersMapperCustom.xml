@@ -4,8 +4,8 @@
 
     <sql id="query_orders_where">
         <if test="ordersCustom != null">
-            <if test="ordersCustom.name != null and ordersCustom.name != ' '">
-                orders.name LIKE '%${ordersCustom.name}%'
+            <if test="ordersCustom.phone != null and ordersCustom.phone != ' '">
+                orders.phone LIKE '%${ordersCustom.phone}%'
             </if>
         </if>
     </sql>
@@ -15,5 +15,8 @@
         <where>
           <include refid="query_orders_where"/>
         </where>
+    </select>
+    <select id="findSpecialOrdersList" parameterType="cn.josh.cm.po.OrdersQueryVo" resultType="cn.josh.cm.po.OrdersCustom">
+        SELECT * FROM orders WHERE datediff(now(),orders.date)>=90 AND orders.projectname LIKE '%保养%'
     </select>
 </mapper>
