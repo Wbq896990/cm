@@ -17,7 +17,7 @@ public class URLController {
         return "/success";
     }
 
-    @RequestMapping(value = "s/index")
+    @RequestMapping(value = "/index")
     public String index()throws Exception{
         return "/index";
     }
