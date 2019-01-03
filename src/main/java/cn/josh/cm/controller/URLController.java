@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class URLController {
 
-    @RequestMapping(value = "/success")
+    @RequestMapping(value = "/cm/success")
     public String success()throws Exception{
         return "/success";
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/cm/index")
     public String index()throws Exception{
         return "/index";
     }

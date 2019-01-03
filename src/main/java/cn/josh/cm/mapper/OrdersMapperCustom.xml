@@ -17,6 +17,6 @@
         </where>
     </select>
     <select id="findSpecialOrdersList" parameterType="cn.josh.cm.po.OrdersQueryVo" resultType="cn.josh.cm.po.OrdersCustom">
-        SELECT * FROM orders WHERE datediff(now(),orders.date)>=90 AND orders.projectname LIKE '%保养%'
+        SELECT * FROM orders WHERE datediff(now(),orders.date)>=180 AND orders.projectname LIKE '%保养%'
     </select>
 </mapper>

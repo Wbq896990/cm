@@ -6,7 +6,7 @@
          version="3.1">
 
 
-    <display-name>sm</display-name>
+    <display-name>cm</display-name>
 
 
     <!--加载spring容器-->

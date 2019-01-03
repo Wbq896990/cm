@@ -19,7 +19,7 @@
     <input type="text" name="phone"/>
     <input type="submit" value="搜索"/>
 </form>
-<a href="${pageContext.request.contextPath}/orders/findSpecialOrdersList.action">保养超过90天列表</a><br>
+<a href="${pageContext.request.contextPath}/orders/findSpecialOrdersList.action">保养超过180天列表</a><br>
 订单列表：
 <table width="100%" border=1>
     <tr>

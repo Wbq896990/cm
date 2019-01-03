@@ -10,10 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
 <html>
 <head>
-    <title>保养90天列表</title>
+    <title>保养180天列表</title>
 </head>
 <body>
-保养90天列表：
+保养180天列表：
 <table width="100%" border=1>
     <tr>
         <td>名字</td>
